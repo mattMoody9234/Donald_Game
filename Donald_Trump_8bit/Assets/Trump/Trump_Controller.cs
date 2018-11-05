@@ -14,6 +14,8 @@ public class Trump_Controller : MonoBehaviour
     public GameObject Trump;
     private Animator trumpAnim;
     private SpriteRenderer trumpSR;
+    private Transform trumpPos;
+
 
 
     // Use this for initialization
@@ -24,12 +26,22 @@ public class Trump_Controller : MonoBehaviour
         hasDoubleJump = true;
         trumpAnim = Trump.GetComponent<Animator>();
         trumpSR = Trump.GetComponent<SpriteRenderer>();
+        trumpPos = Trump.GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (trumpPos.rotation.z != 0.0f)
+        {
+            Quaternion holdRot;
+            holdRot.x = trumpPos.rotation.x;
+            holdRot.y = trumpPos.rotation.y;
+            holdRot.z = 0;
+            holdRot.w =  trumpPos.rotation.w;
+            trumpPos.rotation = holdRot;
+            
+        }
         //movement handling
         if (isControllable)
         {

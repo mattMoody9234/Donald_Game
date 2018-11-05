@@ -1,0 +1,57 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CamMovement : MonoBehaviour {
+    //shoudl be able to use this for the cam in most scenes
+
+    //the cam position
+    public Transform camPos;
+
+    //the donald position
+    public Transform donPos;
+
+    //variable for max and min x x component
+    public float xMaxLeft;
+    public float xMaxRight;
+
+    // Use this for initialization
+    void Start () {
+        Vector3 holdPos;
+        holdPos.x = donPos.position.x;
+        holdPos.y = camPos.position.y;
+        holdPos.z = camPos.position.z;
+        camPos.position = holdPos;
+        
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        //go ahead and stop that boi from crossing the line
+        if (donPos.position.x <= xMaxLeft )
+        {
+            Vector3 holdPos;
+            holdPos.x = xMaxLeft;
+            holdPos.y = camPos.position.y;
+            holdPos.z = camPos.position.z;
+            camPos.position =  holdPos;
+        }
+        else if( donPos.position.x >= xMaxRight)
+        {
+            Vector3 holdPos;
+            holdPos.x = xMaxRight;
+            holdPos.y = camPos.position.y;
+            holdPos.z = camPos.position.z;
+            camPos.position = holdPos;
+        }
+        else
+        {
+            Vector3 holdPos;
+            holdPos.x = donPos.position.x;
+            holdPos.y = camPos.position.y;
+            holdPos.z = camPos.position.z;
+            camPos.position = holdPos;
+        }
+
+    }
+}
