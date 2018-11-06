@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Dialog_Enter : MonoBehaviour {
 
-    
+    //game manager
+    public Inside_White_House_Game_Manager gameManager;
     //
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -21,8 +22,8 @@ public class Dialog_Enter : MonoBehaviour {
     {
         if (col.name == "Trump")
         {
-            
 
+          //  gameManager
         }
     }
 }

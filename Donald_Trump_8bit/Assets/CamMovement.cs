@@ -18,10 +18,10 @@ public class CamMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        gameManager.donPos = gameManager.Trump.GetComponent<Transform>();
+        
 
         Vector3 holdPos;
-        holdPos.x = gameManager.donPos.position.x;
+        holdPos.x = gameManager.getDonPos().position.x;
         holdPos.y = camPos.position.y;
         holdPos.z = camPos.position.z;
         camPos.position = holdPos;
@@ -32,7 +32,7 @@ public class CamMovement : MonoBehaviour {
 	void Update () {
         //go ahead and stop that boi from crossing the line
 
-        if (gameManager.donPos.position.x <= xMaxLeft )
+        if (gameManager.getDonPos().position.x <= xMaxLeft )
         {
             Vector3 holdPos;
             holdPos.x = xMaxLeft;
@@ -40,7 +40,7 @@ public class CamMovement : MonoBehaviour {
             holdPos.z = camPos.position.z;
             camPos.position =  holdPos;
         }
-        else if(gameManager.donPos.position.x >= xMaxRight)
+        else if(gameManager.getDonPos().position.x >= xMaxRight)
         {
             Vector3 holdPos;
             holdPos.x = xMaxRight;
@@ -51,7 +51,7 @@ public class CamMovement : MonoBehaviour {
         else
         {
             Vector3 holdPos;
-            holdPos.x = gameManager.donPos.position.x;
+            holdPos.x = gameManager.getDonPos().position.x;
             holdPos.y = camPos.position.y;
             holdPos.z = camPos.position.z;
             camPos.position = holdPos;

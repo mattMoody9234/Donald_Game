@@ -16,7 +16,8 @@ public class Trump_Controller : MonoBehaviour
     private SpriteRenderer trumpSR;
     private Transform trumpPos;
 
-
+    //game manager
+    public Inside_White_House_Game_Manager gameManager;
 
     // Use this for initialization
     void Start()
