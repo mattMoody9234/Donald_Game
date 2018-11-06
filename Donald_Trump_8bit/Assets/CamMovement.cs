@@ -8,8 +8,9 @@ public class CamMovement : MonoBehaviour {
     //the cam position
     public Transform camPos;
 
-    //the donald position
-    public Transform donPos;
+   
+    //game manager
+    public Inside_White_House_Game_Manager gameManager;
 
     //variable for max and min x x component
     public float xMaxLeft;
@@ -17,8 +18,10 @@ public class CamMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        gameManager.donPos = gameManager.Trump.GetComponent<Transform>();
+
         Vector3 holdPos;
-        holdPos.x = donPos.position.x;
+        holdPos.x = gameManager.donPos.position.x;
         holdPos.y = camPos.position.y;
         holdPos.z = camPos.position.z;
         camPos.position = holdPos;
@@ -28,7 +31,8 @@ public class CamMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //go ahead and stop that boi from crossing the line
-        if (donPos.position.x <= xMaxLeft )
+
+        if (gameManager.donPos.position.x <= xMaxLeft )
         {
             Vector3 holdPos;
             holdPos.x = xMaxLeft;
@@ -36,7 +40,7 @@ public class CamMovement : MonoBehaviour {
             holdPos.z = camPos.position.z;
             camPos.position =  holdPos;
         }
-        else if( donPos.position.x >= xMaxRight)
+        else if(gameManager.donPos.position.x >= xMaxRight)
         {
             Vector3 holdPos;
             holdPos.x = xMaxRight;
@@ -47,7 +51,7 @@ public class CamMovement : MonoBehaviour {
         else
         {
             Vector3 holdPos;
-            holdPos.x = donPos.position.x;
+            holdPos.x = gameManager.donPos.position.x;
             holdPos.y = camPos.position.y;
             holdPos.z = camPos.position.z;
             camPos.position = holdPos;

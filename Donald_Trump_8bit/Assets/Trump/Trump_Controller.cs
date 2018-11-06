@@ -6,7 +6,7 @@ public class Trump_Controller : MonoBehaviour
 {
     //variable for controllability
     // using for cutscenes and whatnot
-    bool isControllable;
+    public bool isControllable;
     bool hasJump;
     bool hasDoubleJump;
 
@@ -82,5 +82,11 @@ public class Trump_Controller : MonoBehaviour
             }
 
         }
+    }
+
+    public void turnOffTrump()
+    {
+        isControllable = false;
+        trumpAnim.SetBool("Run", false);
     }
 }
