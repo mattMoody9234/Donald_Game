@@ -11,18 +11,20 @@ public class Inside_White_House_Game_Manager : MonoBehaviour {
     private  Transform donPos;
 
     //colliding with the dialoge start
-    private bool dialogueStart;
+    private bool isInDialogue;
+
+    public CamMovement gameCam;
 
     // Use this for initialization
     void Start () {
         turnOffTrump = Trump.GetComponent<Trump_Controller>();
         donPos = Trump.GetComponent<Transform>();
-        dialogueStart = false;
+        isInDialogue = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (dialogueStart)
+        if (isInDialogue)
         {
             turnOffTrump.turnOffTrump();
         }
@@ -31,5 +33,17 @@ public class Inside_White_House_Game_Manager : MonoBehaviour {
     public Transform getDonPos()
     {
         return donPos;
+    }
+
+    public bool getIsInDialogue()
+    {
+        return isInDialogue;
+    }
+
+    public void enterDialogue()
+    {
+        isInDialogue = true;
+        gameCam.setLerpTime(true);
+        //gameCam.lerpCam(gameCam.transform.position.x, gameCam.xMaxRight, 0.0001f);
     }
 }

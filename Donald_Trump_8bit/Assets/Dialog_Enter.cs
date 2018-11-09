@@ -23,7 +23,7 @@ public class Dialog_Enter : MonoBehaviour {
         if (col.name == "Trump")
         {
 
-          //  gameManager
+            gameManager.enterDialogue();
         }
     }
 }
