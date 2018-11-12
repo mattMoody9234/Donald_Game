@@ -15,12 +15,30 @@ public class Inside_White_House_Game_Manager : MonoBehaviour {
 
     public CamMovement gameCam;
 
+    public SpriteRenderer talkingPres;
+
     // Use this for initialization
     void Start () {
         turnOffTrump = Trump.GetComponent<Trump_Controller>();
         donPos = Trump.GetComponent<Transform>();
         isInDialogue = false;
-	}
+
+
+        switch (StaticTracker.curHelpingPres)
+        {
+            case curPresident.JFK:
+                talkingPres.sprite = Resources.Load("Past Presidents/Kennedy/8bit Kennedy 2", typeof(Sprite)) as Sprite;
+                Debug.Log("Made it in the JFK");
+                break;
+            case curPresident.GeorgeWBush:
+                break;
+            case curPresident.BillClinton:
+                break;
+            default:
+                break;
+        }
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

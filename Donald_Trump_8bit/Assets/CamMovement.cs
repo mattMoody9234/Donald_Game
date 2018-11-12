@@ -69,13 +69,13 @@ public class CamMovement : MonoBehaviour
         else if(lerpTime)
         {
             lerpCam(transform.position.x, xMaxRight);
-            Debug.Log("Ayy we got the else");
+
         }
     }
 
     public void setLerpTime(bool toLerpOrNotToLerp)
     {
-        Debug.Log("set lerp time to true");
+
 
         lerpTime = toLerpOrNotToLerp;
     }
@@ -84,11 +84,11 @@ public class CamMovement : MonoBehaviour
         //lerp formula (b-a) * r + a
         //a is destination / end
         //b is source / start
-        Debug.Log("in lerp function");
+
 
         if (ratio <= 1.0f)
         {
-            Debug.Log("big lerping");
+
 
             Vector3 holdPos;
             holdPos.x = (((endPos - startPos) * ratio) + startPos);
@@ -102,7 +102,7 @@ public class CamMovement : MonoBehaviour
         {
             lerpTime = false;
             ratio = 0.0001f;
-            Debug.Log("lerp done");
+
              
         }
 
