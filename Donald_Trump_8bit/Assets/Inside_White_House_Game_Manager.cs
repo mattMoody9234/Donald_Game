@@ -28,11 +28,12 @@ public class Inside_White_House_Game_Manager : MonoBehaviour {
         {
             case curPresident.JFK:
                 talkingPres.sprite = Resources.Load("Past Presidents/Kennedy/8bit Kennedy 2", typeof(Sprite)) as Sprite;
-                Debug.Log("Made it in the JFK");
                 break;
             case curPresident.GeorgeWBush:
+                talkingPres.sprite = Resources.Load("Past Presidents/Bush/8bit Bush", typeof(Sprite)) as Sprite;
                 break;
             case curPresident.BillClinton:
+                talkingPres.sprite = Resources.Load("Past Presidents/Clinton/8bit Clinton", typeof(Sprite)) as Sprite;
                 break;
             default:
                 break;
