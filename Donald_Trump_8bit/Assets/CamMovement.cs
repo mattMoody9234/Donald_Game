@@ -20,7 +20,7 @@ public class CamMovement : MonoBehaviour
     //use for lerping
     float ratio;
     bool lerpTime;
-
+    float startingLerpPos;
     // Use this for initialization
     void Start()
     {
@@ -28,9 +28,9 @@ public class CamMovement : MonoBehaviour
 
         
 
-        ratio = 0.0001f;
+        ratio = 0.005f;
         lerpTime = false;
-
+        startingLerpPos = 0.0f;
  
     }
 
@@ -68,15 +68,17 @@ public class CamMovement : MonoBehaviour
         }
         else if(lerpTime)
         {
-            lerpCam(transform.position.x, xMaxRight);
+            if(startingLerpPos == 0.0f)
+            {
+                startingLerpPos = transform.position.x;
+            }
+            lerpCam(startingLerpPos, xMaxRight);
 
         }
     }
 
     public void setLerpTime(bool toLerpOrNotToLerp)
     {
-
-
         lerpTime = toLerpOrNotToLerp;
     }
     public void lerpCam(float startPos, float endPos)
@@ -85,25 +87,28 @@ public class CamMovement : MonoBehaviour
         //a is destination / end
         //b is source / start
 
+      
 
         if (ratio <= 1.0f)
         {
 
-
+  Debug.Log(ratio);
             Vector3 holdPos;
-            holdPos.x = (((endPos - startPos) * ratio) + startPos);
+           holdPos.x = (((endPos - startPos) * ratio) + startPos);
+           // holdPos.x = (((startPos - endPos) * ratio) + endPos);
             holdPos.y = transform.position.y;
             holdPos.z = transform.position.z;
             transform.position = holdPos;
 
-            ratio += 0.0001f;
+            ratio += 0.005f;
         }
         else
         {
             lerpTime = false;
-            ratio = 0.0001f;
+            ratio = 0.005f;
+            gameManager.setShowChatBubble(true);
+        Debug.Log("ended lerp");
 
-             
         }
 
     }

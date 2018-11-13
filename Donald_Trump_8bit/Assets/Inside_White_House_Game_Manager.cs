@@ -11,11 +11,15 @@ public class Inside_White_House_Game_Manager : MonoBehaviour {
     private  Transform donPos;
 
     //colliding with the dialoge start
-    private bool isInDialogue;
-
+    private bool isInDialogue ;
+    //displaying chat bubble
+    private bool showChatBubble;
     public CamMovement gameCam;
 
     public SpriteRenderer talkingPres;
+
+    public SpriteRenderer chatBubble;
+
 
     // Use this for initialization
     void Start () {
@@ -23,7 +27,7 @@ public class Inside_White_House_Game_Manager : MonoBehaviour {
         donPos = Trump.GetComponent<Transform>();
         isInDialogue = false;
 
-
+        showChatBubble = false;
         switch (StaticTracker.curHelpingPres)
         {
             case curPresident.JFK:
@@ -47,6 +51,16 @@ public class Inside_White_House_Game_Manager : MonoBehaviour {
         {
             turnOffTrump.turnOffTrump();
         }
+        if (showChatBubble)
+        {
+            chatBubble.enabled = true;
+            Debug.Log("update loop with chat bubble true");
+        }
+        else
+        {
+            
+            chatBubble.enabled = false;
+        }
 	}
 
     public Transform getDonPos()
@@ -58,7 +72,15 @@ public class Inside_White_House_Game_Manager : MonoBehaviour {
     {
         return isInDialogue;
     }
-
+    public bool getShowChatBubble()
+    {
+        return showChatBubble;
+    }
+    public void setShowChatBubble(bool doOrDont)
+    {
+        showChatBubble = doOrDont;
+        Debug.Log("Set chat bubble to show up");
+    }
     public void enterDialogue()
     {
         isInDialogue = true;
