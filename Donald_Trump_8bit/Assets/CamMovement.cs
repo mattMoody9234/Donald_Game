@@ -92,7 +92,6 @@ public class CamMovement : MonoBehaviour
         if (ratio <= 1.0f)
         {
 
-  Debug.Log(ratio);
             Vector3 holdPos;
            holdPos.x = (((endPos - startPos) * ratio) + startPos);
            // holdPos.x = (((startPos - endPos) * ratio) + endPos);

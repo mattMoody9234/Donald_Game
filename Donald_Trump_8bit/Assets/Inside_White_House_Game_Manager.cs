@@ -18,7 +18,7 @@ public class Inside_White_House_Game_Manager : MonoBehaviour {
 
     public SpriteRenderer talkingPres;
 
-    public SpriteRenderer chatBubble;
+    public Canvas chatBubble;
 
 
     // Use this for initialization
