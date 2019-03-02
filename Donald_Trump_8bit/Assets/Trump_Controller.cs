@@ -15,10 +15,13 @@ public class Trump_Controller : MonoBehaviour
     private Animator trumpAnim;
     private SpriteRenderer trumpSR;
     private Transform trumpPos;
+    private Rigidbody2D trumpRigid;
 
     //game manager
     public Inside_White_House_Game_Manager gameManager;
 
+    //public Vector2 speed = new Vector2(150f, 10f);
+    //Vector2 maxVelocity = new Vector2(60, 100 );
     // Use this for initialization
     void Start()
     {
@@ -28,6 +31,7 @@ public class Trump_Controller : MonoBehaviour
         trumpAnim = Trump.GetComponent<Animator>();
         trumpSR = Trump.GetComponent<SpriteRenderer>();
         trumpPos = Trump.GetComponent<Transform>();
+        trumpRigid = Trump.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -46,17 +50,38 @@ public class Trump_Controller : MonoBehaviour
         //movement handling
         if (isControllable)
         {
+            //float addForceX = 0.0f;
+            //float addForceY = 0.0f;
+            //float absVelocity = Mathf.Abs(trumpRigid.velocity.x);
+
             if (Input.GetAxis("Horizontal") < 0f)
             {
                 trumpAnim.SetBool("Run", true);
                 trumpSR.flipX = true;
-                Trump.transform.Translate(Time.deltaTime * -5.0f, 0.0f, 0.0f);
+                //trumpRigid.AddForce(new Vector2(-750000.0f, 0.0f));
+
+                //Trump.transform.Translate(Time.deltaTime * -750.0f, 0.0f, 0.0f);
+                //if (absVelocity < maxVelocity.x)
+                //{
+                //    addForceX = speed.x;
+                //    trumpRigid.AddForce(new Vector2(addForceX, 0.0f));
+                //}
+                
+                
+
             }
             else if (Input.GetAxis("Horizontal") > 0f)
             {
                 trumpAnim.SetBool("Run", true);
                 trumpSR.flipX = false;
-                Trump.transform.Translate(Time.deltaTime * 5.0f, 0.0f, 0.0f);
+                //trumpRigid.AddForce(new Vector2(7500000.0f, 0.0f));
+
+                //Trump.transform.Translate(Time.deltaTime * 750.0f, 0.0f, 0.0f);
+                //if (absVelocity < maxVelocity.x)
+                //{
+                //    addForceX = -speed.x;
+                //    trumpRigid.AddForce(new Vector2(addForceX, 0.0f));
+                //}
             }
             else
             {
@@ -70,13 +95,16 @@ public class Trump_Controller : MonoBehaviour
                 if (hasJump)
                 {
                     trumpAnim.SetTrigger("Jump");
-                    Trump.transform.Translate(Time.deltaTime * 0.0f, 1.0f, 0.0f);           
+                    trumpRigid.AddForce(Vector2.up * 1000.0f);
+                    //Trump.transform.Translate(Time.deltaTime * 0.0f, 100.0f, 0.0f);           
                     hasJump = false;
                 }
                 else if (hasDoubleJump)
                 {
                     trumpAnim.SetTrigger("Jump");
-                    Trump.transform.Translate(Time.deltaTime * 0.0f, 1.0f, 0.0f);           
+                    trumpRigid.AddForce(Vector2.up * 1000.0f);
+
+                    //Trump.transform.Translate(Time.deltaTime * 0.0f, 100.0f, 0.0f);           
                     hasDoubleJump = false;
                 }
 
@@ -89,5 +117,18 @@ public class Trump_Controller : MonoBehaviour
     {
         isControllable = false;
         trumpAnim.SetBool("Run", false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            hasJump = true;
+            hasDoubleJump = true;
+        }
+        //else
+        //{
+        //    Trump.GetComponent<Rigidbody2D>();
+        //}
     }
 }

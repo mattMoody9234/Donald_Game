@@ -15,7 +15,7 @@ public class DialogueBox : MonoBehaviour {
 
     private string dialogueLocation;
     
-    private List<string> dialogue;
+    private List<string> dialogue = new List<string>();
 
     private int lineNum;
 
@@ -26,7 +26,7 @@ public class DialogueBox : MonoBehaviour {
         switch (StaticTracker.curHelpingPres)
         {
             case curPresident.JFK:
-                dialogueLocation = "Resources/Dialogue/KennedyDialogue";
+                dialogueLocation = "Assets/Resources/Dialogue/KennedyDialogue.txt";
                 break;
             case curPresident.GeorgeWBush:
                 break;
